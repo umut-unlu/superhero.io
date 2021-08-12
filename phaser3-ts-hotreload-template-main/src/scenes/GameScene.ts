@@ -79,14 +79,14 @@ export default class GameScene extends Phaser.Scene {
 	}
 
 	update() {
-		let pointer = this.input.activePointer;
+		/*let pointer = this.input.activePointer;
 
 		if(pointer.isDown){
 			this.collader = this.physics.add.collider(this.player, this.ePlayer, this.destroyEnemy, null, this);
 		}
 		else if (!pointer.isDown){
 			//this.collader.active = false;
-		}
+		}*/
 		/*if (this.player.play('kick'))
         {
             this.physics.add.collider(this.player, this.ePlayer, this.destroyEnemy, null, this);
@@ -187,7 +187,7 @@ export default class GameScene extends Phaser.Scene {
 		this.physics.add.collider(this.blueGroup, this.ePlayer, this.destroyRock, null, this);
 		
 		let player = this.player;
-		this.input.on('pointerdown', function () {
+		this.input.on('pointerdown',  () => {
             player.play('kick');
 			player.playAfterDelay('walk', 400);
         }, this);
