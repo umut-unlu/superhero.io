@@ -22,6 +22,7 @@ export default class GameScene extends Phaser.Scene {
 	purpleGroup;
 	fire;
 	collader;
+	enemies;
 	
 	
 	constructor() {
@@ -146,12 +147,13 @@ export default class GameScene extends Phaser.Scene {
 			bounceY: 0,	
 			collideWorldBounds: true	
 		});
-		
+
 		this.blueGroup.children.iterate((child) =>{
 			let xx = Math.floor(Math.random() * this.background.displayWidth);
 			let yy = Math.floor(Math.random() * this.background.displayHeight);
 			child.x = xx;
 			child.y = yy;
+			child.setCircle(15);
 			child.scale = 0.03;	
 		});
 
@@ -179,7 +181,6 @@ export default class GameScene extends Phaser.Scene {
 		{
 			let ball = this.purpleGroup.create(Math.floor(Math.random() * this.background.displayWidth), Math.floor(Math.random() * this.background.displayHeight), 'blue');
 		}*/
-
 
 
 
@@ -213,7 +214,7 @@ export default class GameScene extends Phaser.Scene {
 	{
 		let tx = Math.random()*this.background.displayWidth;
 		let ty = Math.random()*this.background.displayHeight;
-		let rrr = this.physics.add.sprite(tx,ty,'blue');;
+		let rrr = this.physics.add.sprite(tx,ty,'blue').setCircle(15);
 		rrr.scale = 0.03;
 
 		this.blueGroup.add(rrr);
