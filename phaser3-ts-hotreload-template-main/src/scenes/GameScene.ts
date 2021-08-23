@@ -22,6 +22,7 @@ export default class GameScene extends Phaser.Scene {
 	purpleGroup;
 	fire;
 	collader;
+	enemies;
 	
 	
 	constructor() {
@@ -79,14 +80,14 @@ export default class GameScene extends Phaser.Scene {
 	}
 
 	update() {
-		let pointer = this.input.activePointer;
+		/*let pointer = this.input.activePointer;
 
 		if(pointer.isDown){
 			this.collader = this.physics.add.collider(this.player, this.ePlayer, this.destroyEnemy, null, this);
 		}
 		else if (!pointer.isDown){
 			//this.collader.active = false;
-		}
+		}*/
 		/*if (this.player.play('kick'))
         {
             this.physics.add.collider(this.player, this.ePlayer, this.destroyEnemy, null, this);
@@ -146,12 +147,13 @@ export default class GameScene extends Phaser.Scene {
 			bounceY: 0,	
 			collideWorldBounds: true	
 		});
-		
+
 		this.blueGroup.children.iterate((child) =>{
 			let xx = Math.floor(Math.random() * this.background.displayWidth);
 			let yy = Math.floor(Math.random() * this.background.displayHeight);
 			child.x = xx;
 			child.y = yy;
+			child.setCircle(15);
 			child.scale = 0.03;	
 		});
 
@@ -182,12 +184,11 @@ export default class GameScene extends Phaser.Scene {
 
 
 
-
 		this.physics.add.collider(this.blueGroup, this.player, this.destroyRock, null, this);
 		this.physics.add.collider(this.blueGroup, this.ePlayer, this.destroyRock, null, this);
 		
 		let player = this.player;
-		this.input.on('pointerdown', function () {
+		this.input.on('pointerdown',  () => {
             player.play('kick');
 			player.playAfterDelay('walk', 400);
         }, this);
@@ -213,7 +214,7 @@ export default class GameScene extends Phaser.Scene {
 	{
 		let tx = Math.random()*this.background.displayWidth;
 		let ty = Math.random()*this.background.displayHeight;
-		let rrr = this.physics.add.sprite(tx,ty,'blue');;
+		let rrr = this.physics.add.sprite(tx,ty,'blue').setCircle(15);
 		rrr.scale = 0.03;
 
 		this.blueGroup.add(rrr);
